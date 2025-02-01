@@ -11,7 +11,7 @@ class lineal_search{
     public:
 
     static pair<int, int> find(const vector<pair<int, int>>& centrals, const pair<int, int>& new_contract){
-        double min_distance = numeric_limits<double>max();
+        double min_distance = numeric_limits<double>::max();
         pair<int, int> closest_central;
 
         for (const auto& central: centrals){

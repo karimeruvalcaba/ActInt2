@@ -66,7 +66,7 @@ class Graph{
         DSU s(V);
         int ans = 0;
         int count = 0; 
-        cout << "Parte 1: Algoritmo de Kruskal: " << endl;
+        //cout << "Parte 1: Algoritmo de Kruskal: " << endl;
         for (auto edge : edgeList){
             int w = edge[0];
             int x = edge[1];
@@ -88,6 +88,6 @@ class Graph{
                 break;
             }
         }
-        cout << "Minimum Cost Spanning Tree: " << ans;
+        //cout << "Minimum Cost Spanning Tree: " << ans;
     }
 };
