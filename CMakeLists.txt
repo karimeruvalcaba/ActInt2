@@ -28,18 +28,14 @@ FetchContent_MakeAvailable(googletest)
 if(ENABLE_TESTING)
     enable_testing()
 
-    # Archivos de pruebas
-    set(TEST_SOURCES
-        tests/test_edmonds_karp.cpp
-        tests/test_kruskal.cpp
-    )
+    # Test Suite 1: Edmonds-Karp
+    add_executable(test_edmonds_karp tests/test_edmonds_karp.cpp)
+    target_link_libraries(test_edmonds_karp PRIVATE gtest gtest_main)
+    add_test(NAME TestEdmondsKarp COMMAND test_edmonds_karp)
 
-    # Crear ejecutable de pruebas
-    add_executable(test_suite ${TEST_SOURCES})
-
-    # Enlazar GoogleTest
-    target_link_libraries(test_suite PRIVATE gtest gtest_main)
-
-    # Registrar pruebas con CTest
-    add_test(NAME AllTests COMMAND test_suite)
+    # Test Suite 2: Kruskal
+    add_executable(test_kruskal tests/test_kruskal.cpp)
+    target_link_libraries(test_kruskal PRIVATE gtest gtest_main)
+    add_test(NAME TestKruskal COMMAND test_kruskal)
 endif()
+
