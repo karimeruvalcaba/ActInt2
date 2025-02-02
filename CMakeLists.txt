@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES
         main.cpp
         test_edmonds_karp.h
+        test_kruskal.h
 )
 
 
@@ -30,6 +31,7 @@ if(ENABLE_TESTING)
     # Archivos de pruebas
     set(TEST_SOURCES
         tests/test_edmonds_karp.cpp
+        tests/test_kruskal.cpp
     )
 
     # Crear ejecutable de pruebas
