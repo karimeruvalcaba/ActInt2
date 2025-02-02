@@ -29,7 +29,7 @@ if(ENABLE_TESTING)
 
     # Archivos de pruebas
     set(TEST_SOURCES
-        test_edmonds_karp.cpp
+        tests/test_edmonds_karp.cpp
     )
 
     # Crear ejecutable de pruebas
