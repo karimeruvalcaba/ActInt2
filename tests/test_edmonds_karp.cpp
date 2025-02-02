@@ -12,7 +12,7 @@ TEST(test_edmonds_karp, test_1_edmonds_karp)
                                     {0, 0, 0, 0, 0, 2},
                                     {0, 0, 0, 0, 0, 3}};
     
-    int V = capacity.size()
+    int V = capacity.size();
     ASSERT_EQ(edmonds_karp::solve(V, capacity, 0, V - 1), 5);
 }
 
