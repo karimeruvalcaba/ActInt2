@@ -59,7 +59,7 @@ class Graph{
         edgeList.push_back({ w, x, y});
     }
 
-    void kruskals_mst(){
+    int kruskals_mst(){
 
         sort(edgeList.begin(), edgeList.end());
 
@@ -89,5 +89,6 @@ class Graph{
             }
         }
         //cout << "Minimum Cost Spanning Tree: " << ans;
+        return ans;
     }
 };
