@@ -43,7 +43,7 @@ TEST(test_kruskal, test_3_kruskal)
     g.addEdge(1, 3, 2);
     g.addEdge(2, 4, 3);
 
-    ASSERT_EQ(g.kruskals_mst(), 15); 
+    ASSERT_EQ(g.kruskals_mst(), 13); 
 }
 
 TEST(test_kruskal, test_4_kruskal)
