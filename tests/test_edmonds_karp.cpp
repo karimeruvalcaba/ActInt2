@@ -17,7 +17,7 @@ TEST(test_edmonds_karp, test_1_edmonds_karp)
 }
 
 // TEST 2: Grafo simple 2
-TEST(test_edmonds_karp, test_2_simple_case)
+TEST(test_edmonds_karp, test_2_edmonds_karp)
 {
     vector<vector<int>> capacity = {{0, 5, 0, 0},
                                     {0, 0, 4, 0},
@@ -30,7 +30,7 @@ TEST(test_edmonds_karp, test_2_simple_case)
 }
 
 // TEST 3: Grafo desconectado (Sin destino)
-TEST(test_edmonds_karp, test_3_disconnected_graph)
+TEST(test_edmonds_karp, test_3_edmonds_karp)
 {
     vector<vector<int>> capacity = {{0, 5, 0, 0},
                                     {0, 0, 4, 0},
@@ -43,7 +43,7 @@ TEST(test_edmonds_karp, test_3_disconnected_graph)
 }
 
 // TEST 4: Red compleja, con varios caminos
-TEST(test_edmonds_karp, test_4_complex_network)
+TEST(test_edmonds_karp, test_4_edmonds_karp)
 {
     vector<vector<int>> capacity = {{0, 10, 10, 0, 0, 0},
                                     {0, 0, 2, 4, 8, 0},
