@@ -28,9 +28,23 @@
 #include <climits>
 using namespace std;
 
+/**
+ * @class TSP
+ * @brief Clase para resolver el problema del viajero (TSP).
+ *
+ * Esta clase proporciona un método para encontrar la ruta óptima que minimiza
+ * la distancia total en un problema de ruta del viajero (TSP).
+ */
 class TSP{
 public:
-    static vector<int> solve(int n, vector<vector<int>>& distancias){
+    /**
+     * @brief Resuelve el problema del viajero para un conjunto de ciudades.
+     *
+     * @param n Número de ciudades.
+     * @param distancias Matriz de distancias entre ciudades.
+     * @return Un vector con la mejor ruta encontrada.
+     */
+    static vector<int> Solve(int n, vector<vector<int>>& distancias){
         vector<int> nodes(n - 1);
         iota(nodes.begin(), nodes.end(), 1);
 
@@ -53,7 +67,6 @@ public:
 
         return best_route;
     }
-
 };
 
 #endif

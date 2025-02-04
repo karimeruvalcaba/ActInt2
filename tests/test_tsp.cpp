@@ -11,7 +11,7 @@ TEST(test_tsp, test_1_tsp)
         {20, 25, 30, 0}
     };
     vector<int> expected_route = {0, 1, 3, 2}; 
-    ASSERT_EQ(TSP::solve(4, distancias), expected_route);
+    ASSERT_EQ(TSP::Solve(4, distancias), expected_route);
 }
 
 // TEST 2: Grafo mediano 
@@ -24,7 +24,7 @@ TEST(test_tsp, test_2_tsp)
         {21, 17, 28, 0}
     };
     vector<int> expected_route = {0, 2, 1, 3}; // One of the possible optimal routes
-    ASSERT_EQ(TSP::solve(4, distancias), expected_route);
+    ASSERT_EQ(TSP::Solve(4, distancias), expected_route);
 }
 
 // TEST 3: Grafo grande
@@ -38,7 +38,7 @@ TEST(test_tsp, test_3_tsp)
         {7, 6, 9, 6, 0}
     };
     vector<int> expected_route = {0, 4, 1, 3, 2}; 
-    ASSERT_EQ(TSP::solve(5, distancias).size(), expected_route.size());
+    ASSERT_EQ(TSP::Solve(5, distancias).size(), expected_route.size());
 }
 
 // TEST 4: Solo una ruta valida
@@ -49,5 +49,5 @@ TEST(test_tsp, test_4_tsp)
         {1, 0}
     };
     vector<int> expected_route = {0, 1};
-    ASSERT_EQ(TSP::solve(2, distancias), expected_route);
+    ASSERT_EQ(TSP::Solve(2, distancias), expected_route);
 }

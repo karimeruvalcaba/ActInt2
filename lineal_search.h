@@ -28,10 +28,26 @@
 #include <limits>
 using namespace std;
 
-class lineal_search{
+/**
+ * @class LinealSearch
+ * @brief Clase para realizar una búsqueda lineal de la central más cercana.
+ *
+ * Esta clase proporciona un método estático para encontrar la central más
+ * cercana a un nuevo contrato, calculando la distancia euclidiana entre
+ * los puntos proporcionados.
+ */
+class LinealSearch{
     public:
 
-    static pair<int, int> find(const vector<pair<int, int>>& centrals, const pair<int, int>& new_contract){
+    /**
+     * @brief Encuentra la central más cercana a un nuevo contrato.
+     *
+     * @param centrals Un vector de pares de enteros que representan las coordenadas
+     *        de las centrales existentes.
+     * @param new_contract Un par de enteros que representa la ubicación del nuevo contrato.
+     * @return Un par de enteros que representa la central más cercana.
+     */
+    static pair<int, int> Find(const vector<pair<int, int>>& centrals, const pair<int, int>& new_contract){
         double min_distance = numeric_limits<double>::max();
         pair<int, int> closest_central;
 

@@ -101,7 +101,7 @@ int main(){
     g.KruskalsMST();
 
     cout << "Parte 2: Traveling Salesman Problem: " << endl;
-    auto tsp_answer = TSP::solve(V, distances);
+    auto tsp_answer = TSP::Solve(V, distances);
     cout << format_tsp_output(tsp_answer) << endl;
 
     cout << "Parte 3: Edmonds-Karp algorithm: " << endl;
@@ -109,7 +109,7 @@ int main(){
     cout << edmonds_karp_answer << endl;
 
     cout << "Parte 4: Busqueda Lineal: " << endl;
-    auto busqueda_lineal_answer = lineal_search::find(centrals, new_contract);
+    auto busqueda_lineal_answer = LinealSearch::Find(centrals, new_contract);
     cout << "(" << busqueda_lineal_answer.first << ", " << busqueda_lineal_answer.second << ")" << endl;
 
     return 0;
