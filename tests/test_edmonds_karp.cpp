@@ -4,7 +4,6 @@
 // TEST 1: Grafo simple 
 TEST(test_edmonds_karp, test_1_edmonds_karp)
 {
-    edmonds_karp edmonds_karp_test_1;
     vector<vector<int>> capacity = {{0, 3, 3, 0, 0, 0},
                                     {0, 0, 2, 3, 0, 0},
                                     {0, 0, 0, 0, 2, 0},
