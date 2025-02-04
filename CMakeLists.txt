@@ -5,8 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCES
         main.cpp
-        test_edmonds_karp.h
-        test_kruskal.h
+        edmonds_karp.h
+        kruskal.h
+        lineal_search.h
+        tsp.h
 )
 
 
@@ -37,5 +39,15 @@ if(ENABLE_TESTING)
     add_executable(test_kruskal tests/test_kruskal.cpp)
     target_link_libraries(test_kruskal PRIVATE gtest gtest_main)
     add_test(NAME TestKruskal COMMAND test_kruskal)
+
+    # Test Suite 3: Lineal Search
+    add_executable(test_lineal_search tests/test_lineal_search.cpp)
+    target_link_libraries(test_lineal_search PRIVATE gtest gtest_main)
+    add_test(NAME TestLinealSearch COMMAND test_lineal_search)
+
+    # Test Suite 4: TSP
+    add_executable(test_tsp tests/test_tsp.cpp)
+    target_link_libraries(test_tsp PRIVATE gtest gtest_main)
+    add_test(NAME TestTSP COMMAND test_tsp)
 endif()
 
