@@ -1,14 +1,14 @@
 option(ENABLE_COVERAGE "Enable coverage reporting" ON)
+cmake_minimum_required(VERSION 3.30)
+project(unit_test)
+
+set(CMAKE_CXX_STANDARD 17)
 
 if (ENABLE_COVERAGE)
     message(STATUS "Enabling coverage flags for GCC/Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-arcs -ftest-coverage")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 endif()
-cmake_minimum_required(VERSION 3.30)
-project(unit_test)
-
-set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCES
         main.cpp
@@ -17,7 +17,6 @@ set(SOURCES
         lineal_search.h
         tsp.h
 )
-
 
 add_executable(unit_test main.cpp)
 
@@ -37,27 +36,20 @@ FetchContent_MakeAvailable(googletest)
 if(ENABLE_TESTING)
     enable_testing()
 
-    # Test Suite 1: Edmonds-Karp
-    add_executable(test_edmonds_karp tests/test_edmonds_karp.cpp)
-    target_link_libraries(test_edmonds_karp PRIVATE gtest gtest_main)
-    if (ENABLE_COVERAGE)
-        target_link_libraries(test_edmonds_karp PRIVATE gcov)
-    endif()
-    add_test(NAME TestEdmondsKarp COMMAND test_edmonds_karp)
+    function(add_test_executable name source)
+        add_executable(${name} ${source})
+        target_link_libraries(${name} PRIVATE gtest gtest_main)
+        if (ENABLE_COVERAGE)
+            target_link_libraries(${name} PRIVATE gcov)
+            target_compile_options(${name} PRIVATE --coverage -fprofile-arcs -ftest-coverage)
+            target_link_options(${name} PRIVATE --coverage)
+        endif()
+        add_test(NAME ${name} COMMAND ${name})
+    endfunction()
 
-    # Test Suite 2: Kruskal
-    add_executable(test_kruskal tests/test_kruskal.cpp)
-    target_link_libraries(test_kruskal PRIVATE gtest gtest_main)
-    add_test(NAME TestKruskal COMMAND test_kruskal)
+    add_test_executable(test_edmonds_karp tests/test_edmonds_karp.cpp)
+    add_test_executable(test_kruskal tests/test_kruskal.cpp)
+    add_test_executable(test_lineal_search tests/test_lineal_search.cpp)
+    add_test_executable(test_tsp tests/test_tsp.cpp)
 
-    # Test Suite 3: Lineal Search
-    add_executable(test_lineal_search tests/test_lineal_search.cpp)
-    target_link_libraries(test_lineal_search PRIVATE gtest gtest_main)
-    add_test(NAME TestLinealSearch COMMAND test_lineal_search)
-
-    # Test Suite 4: TSP
-    add_executable(test_tsp tests/test_tsp.cpp)
-    target_link_libraries(test_tsp PRIVATE gtest gtest_main)
-    add_test(NAME TestTSP COMMAND test_tsp)
 endif()
-
