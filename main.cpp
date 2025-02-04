@@ -92,13 +92,13 @@ int main(){
     for (int i = 0; i < V; ++i){
         for (int j = i + 1; j < V; ++j){
             if (distances[i][j] != 0){
-                g.addEdge(i, j, distances[i][j]);
+                g.AddEdge(i, j, distances[i][j]);
             }
         }
     }
 
     cout << "Parte 1: Algoritmo de Kruskal: " << endl;
-    g.kruskals_mst();
+    g.KruskalsMST();
 
     cout << "Parte 2: Traveling Salesman Problem: " << endl;
     auto tsp_answer = TSP::solve(V, distances);

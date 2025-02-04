@@ -11,7 +11,7 @@ TEST(test_kruskal, test_1_kruskal)
     g.addEdge(2, 0, 6);
     g.addEdge(0, 3, 5);
 
-    ASSERT_EQ(g.kruskals_mst(), 19); 
+    ASSERT_EQ(g.KruskalsMST(), 19); 
 }
 
 TEST(test_kruskal, test_2_kruskal)
@@ -26,7 +26,7 @@ TEST(test_kruskal, test_2_kruskal)
     g.addEdge(1, 4, 6);
     g.addEdge(0, 2, 7);
 
-    ASSERT_EQ(g.kruskals_mst(), 10); 
+    ASSERT_EQ(g.KruskalsMST(), 10); 
 }
 
 TEST(test_kruskal, test_3_kruskal)
@@ -42,7 +42,7 @@ TEST(test_kruskal, test_3_kruskal)
     g.addEdge(1, 3, 2);
     g.addEdge(2, 4, 3);
 
-    ASSERT_EQ(g.kruskals_mst(), 13); 
+    ASSERT_EQ(g.KruskalsMST(), 13); 
 }
 
 TEST(test_kruskal, test_4_kruskal)
@@ -59,5 +59,5 @@ TEST(test_kruskal, test_4_kruskal)
     g.addEdge(5, 6, 7);
     g.addEdge(4, 6, 5);
 
-    ASSERT_EQ(g.kruskals_mst(), 19); 
+    ASSERT_EQ(g.KruskalsMST(), 19); 
 }
