@@ -1,3 +1,10 @@
+option(ENABLE_COVERAGE "Enable coverage reporting" ON)
+
+if (ENABLE_COVERAGE)
+    message(STATUS "Enabling coverage flags for GCC/Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-arcs -ftest-coverage")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+endif()
 cmake_minimum_required(VERSION 3.30)
 project(unit_test)
 
@@ -33,6 +40,9 @@ if(ENABLE_TESTING)
     # Test Suite 1: Edmonds-Karp
     add_executable(test_edmonds_karp tests/test_edmonds_karp.cpp)
     target_link_libraries(test_edmonds_karp PRIVATE gtest gtest_main)
+    if (ENABLE_COVERAGE)
+        target_link_libraries(test_edmonds_karp PRIVATE gcov)
+    endif()
     add_test(NAME TestEdmondsKarp COMMAND test_edmonds_karp)
 
     # Test Suite 2: Kruskal
