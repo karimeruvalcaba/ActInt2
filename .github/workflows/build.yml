@@ -28,8 +28,8 @@ jobs:
         run: |
           cd build
           ctest --output-on-failure
-          lcov --capture --directory . --output-file coverage.info
-          gcovr --sonarqube -o coverage.xml
+          lcov --capture --directory . --output-file coverage.info --ignore-errors mismatch
+          gcovr --root .. --exclude 'tests/*' --exclude 'build/*' --sonarqube -o coverage.xml --print-summary
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
@@ -40,11 +40,11 @@ jobs:
   build_analysis:
     name: Build and Analyze with SonarQube
     runs-on: ubuntu-latest
-    needs: tests  # Ensures tests run first before analysis
+    needs: tests
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Required for better analysis
+          fetch-depth: 0
 
       - name: Download Coverage Report
         uses: actions/download-artifact@v4
@@ -57,10 +57,3 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
-      # Optional: Enforce Quality Gate
-      # - name: SonarQube Quality Gate Check
-      #   uses: sonarsource/sonarqube-quality-gate-action@master
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
