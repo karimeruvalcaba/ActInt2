@@ -27,3 +27,4 @@ TEST(test_lineal_search, test_4_lineal_search)
     vector<pair<int, int>> centrals = {{100, 100}, {200, 200}, {300, 300}};
     pair<int, int> new_contract = {250, 250};
     ASSERT_EQ(lineal_search::find(centrals, new_contract), make_pair(200, 200));
+}
