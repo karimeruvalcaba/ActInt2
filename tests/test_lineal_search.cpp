@@ -5,7 +5,7 @@ TEST(test_lineal_search, test_1_lineal_search)
 {
     vector<pair<int, int>> centrals = {{0, 0}, {5, 5}, {10, 10}};
     pair<int, int> new_contract = {3, 3};
-    ASSERT_EQ(lineal_search::find(centrals, new_contract), make_pair(0, 0));
+    ASSERT_EQ(lineal_search::find(centrals, new_contract), make_pair(5, 5));
 }
 
 TEST(test_lineal_search, test_2_lineal_search)
