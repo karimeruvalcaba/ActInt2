@@ -28,7 +28,7 @@ jobs:
         run: |
           cd build
           ctest --output-on-failure
-          gcovr --sonarqube -o coverage.xml
+          gcovr --root .. --exclude 'tests/*' --exclude 'build/*' --sonarqube -o coverage.xml --print-summary
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
