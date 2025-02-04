@@ -28,7 +28,7 @@ TEST(test_tsp, test_2_tsp)
 }
 
 // TEST 3: Grafo grande
-TEST(test_tsp, test_3_tsp
+TEST(test_tsp, test_3_tsp)
 {
     vector<vector<int>> distancias = {
         {0, 10, 8, 9, 7},
