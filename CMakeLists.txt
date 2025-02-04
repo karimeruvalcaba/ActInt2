@@ -1,15 +1,17 @@
-option(ENABLE_COVERAGE "Enable coverage reporting" ON)
 cmake_minimum_required(VERSION 3.30)
 project(unit_test)
 
 set(CMAKE_CXX_STANDARD 17)
 
+# Enable code coverage if requested
+option(ENABLE_COVERAGE "Enable coverage reporting" ON)
 if (ENABLE_COVERAGE)
     message(STATUS "Enabling coverage flags for GCC/Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -fprofile-arcs -ftest-coverage")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 endif()
 
+# Source files
 set(SOURCES
         main.cpp
         edmonds_karp.h
@@ -20,10 +22,10 @@ set(SOURCES
 
 add_executable(unit_test main.cpp)
 
-# Opciones
+# Enable testing
 option(ENABLE_TESTING "Enable a Unit Testing build." ON)
 
-# Descarga GoogleTest usando FetchContent
+# Download and use GoogleTest
 include(FetchContent)
 FetchContent_Declare(
     googletest
@@ -32,7 +34,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-# Si se habilitan las pruebas, agrega GoogleTest y las pruebas unitarias
+# Add unit tests
 if(ENABLE_TESTING)
     enable_testing()
 
@@ -52,4 +54,18 @@ if(ENABLE_TESTING)
     add_test_executable(test_lineal_search tests/test_lineal_search.cpp)
     add_test_executable(test_tsp tests/test_tsp.cpp)
 
+    # Generate coverage reports
+    if (ENABLE_COVERAGE)
+        find_program(LCOV lcov)
+        if (LCOV)
+            add_custom_target(coverage
+                COMMAND lcov --capture --directory . --output-file build/coverage.info
+                COMMAND genhtml build/coverage.info --output-directory build/coverage_html
+                COMMENT "Generating code coverage report"
+                VERBATIM
+            )
+        else()
+            message(WARNING "LCOV not found, coverage reporting will not be available")
+        endif()
+    endif()
 endif()
