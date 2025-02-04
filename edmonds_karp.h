@@ -18,61 +18,65 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
- 
+
 #ifndef EDMONDS_KARP_H
 #define EDMONDS_KARP_H
 
 #include <vector>
 #include <queue>
-#include <algorithm>
 #include <climits>
 using namespace std;
 
-class edmonds_karp{
+class EdmondsKarp {
 public:
-    static int solve(int n, const vector<vector<int>>& capacity, int source, int sink){
-
+    static int solve(int n, const vector<vector<int>>& capacity, int source, int sink) {
         vector<vector<int>> flow(n, vector<int>(n, 0));
         vector<int> parent(n, -1);
-        int max_value_flow = 0;
+        int max_flow = 0;
 
-        auto bfs = [&](){
+        while (bfs(n, capacity, flow, source, sink, parent)) {
+            int flow_path = augmentFlow(capacity, flow, source, sink, parent);
+            max_flow += flow_path;
+        }
+        return max_flow;
+    }
 
-            fill(parent.begin(), parent.end(), -1);
-            queue<int> q;
-            q.push(source);
-            parent[source] = -2;
-            while (!q.empty()){
-                int u = q.front();
-                q.pop();
-                for (int v = 0; v < n; ++v){
-                    if (parent[v] == -1 && capacity[u][v] > flow[u][v]){
-                        parent[v] = u;
-                        q.push(v);
-                        if (v == sink){
-                            return true;
-                        }
-                    }
+private:
+    static bool bfs(int n, const vector<vector<int>>& capacity, const vector<vector<int>>& flow,
+                    int source, int sink, vector<int>& parent) {
+        fill(parent.begin(), parent.end(), -1);
+        queue<int> q;
+        q.push(source);
+        parent[source] = -2;
+
+        while (!q.empty()) {
+            int u = q.front();
+            q.pop();
+
+            for (int v = 0; v < n; ++v) {
+                if (parent[v] == -1 && capacity[u][v] > flow[u][v]) {
+                    parent[v] = u;
+                    q.push(v);
+                    if (v == sink) return true;
                 }
             }
-            return false;
-        };
-
-        while (bfs()){
-
-            int flow_path = INT_MAX;
-            for (int v = sink; v!= source; v = parent[v]){
-                int u = parent[v];
-                flow_path = min(flow_path, capacity[u][v] - flow[u][v]);
-            }
-            for (int v = sink; v!= source; v = parent[v]){
-                int u = parent[v];
-                flow[u][v] += flow_path;
-                flow[v][u] -= flow_path;
-            }
-            max_value_flow += flow_path;
         }
-        return max_value_flow;
+        return false;
+    }
+
+    static int augmentFlow(const vector<vector<int>>& capacity, vector<vector<int>>& flow,
+                           int source, int sink, const vector<int>& parent) {
+        int flow_path = INT_MAX;
+        for (int v = sink; v != source; v = parent[v]) {
+            int u = parent[v];
+            flow_path = min(flow_path, capacity[u][v] - flow[u][v]);
+        }
+        for (int v = sink; v != source; v = parent[v]) {
+            int u = parent[v];
+            flow[u][v] += flow_path;
+            flow[v][u] -= flow_path;
+        }
+        return flow_path;
     }
 };
 
