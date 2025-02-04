@@ -41,7 +41,7 @@ public:
      * @param sink Nodo sumidero.
      * @return El valor del flujo máximo de source a sink.
      */
-    static int solve(int n, const vector<vector<int>>& capacity, int source, int sink) {
+    static int Solve(int n, const vector<vector<int>>& capacity, int source, int sink) {
         vector<vector<int>> flow(n, vector<int>(n, 0));
         vector<int> parent(n, -1);
         int max_flow = 0;

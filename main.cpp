@@ -105,7 +105,7 @@ int main(){
     cout << format_tsp_output(tsp_answer) << endl;
 
     cout << "Parte 3: Edmonds-Karp algorithm: " << endl;
-    int edmonds_karp_answer = EdmondsKarp::solve(V, capacities, 0, V -1);
+    int edmonds_karp_answer = EdmondsKarp::Solve(V, capacities, 0, V -1);
     cout << edmonds_karp_answer << endl;
 
     cout << "Parte 4: Busqueda Lineal: " << endl;
