@@ -57,7 +57,10 @@ private:
                 if (parent[v] == -1 && capacity[u][v] > flow[u][v]) {
                     parent[v] = u;
                     q.push(v);
-                    if (v == sink) return true;
+                    if (v == sink) {
+                        return true;
+                    }
+
                 }
             }
         }
