@@ -28,7 +28,9 @@ jobs:
         run: |
           cd build
           ctest --output-on-failure
+          # Generate LCOV coverage.info
           lcov --capture --directory . --output-file coverage.info --ignore-errors mismatch
+          # Convert LCOV to SonarQube-compatible XML format
           gcovr --root .. --exclude 'tests/*' --exclude 'build/*' --sonarqube -o coverage.xml --print-summary
 
       - name: Upload Coverage Report
