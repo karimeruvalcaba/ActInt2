@@ -30,8 +30,8 @@ jobs:
           ctest --output-on-failure
           # Generate LCOV coverage.info
           lcov --capture --directory . --output-file coverage.info --ignore-errors mismatch
-          # Convert LCOV to SonarQube-compatible XML format
-          gcovr --root .. --exclude 'tests/*' --exclude 'build/*' --sonarqube -o coverage.xml --print-summary
+          # Convert LCOV to SonarQube-compatible XML format, excluding main.cpp
+          gcovr --root .. --exclude 'tests/*' --exclude 'build/*' --exclude 'main.cpp' --sonarqube -o coverage.xml --print-summary
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
