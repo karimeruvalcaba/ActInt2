@@ -1,0 +1,5 @@
+/* AUTORES
+ * Carlos Ernesto Soto Alarcón A01747990: main.cpp,  lineal_search, test_lineal_search.cpp, test_tsp.cpp
+ * Sergio Alfonso Casillas Santoyo A01424863: main.cpp, kruskal.h, test_kruskal.cpp, tsp.h
+ * Karime Itzel Ruvalcaba Pérez A01656188: main.cpp, edmonds_karp.h, test_edmonds_karp.cpp, test_tsp.cpp
+ */

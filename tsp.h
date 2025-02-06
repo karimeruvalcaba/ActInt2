@@ -43,6 +43,8 @@ public:
      * @param n Número de ciudades.
      * @param distancias Matriz de distancias entre ciudades.
      * @return Un vector con la mejor ruta encontrada.
+     * Complejidad O(n!): El algoritmo genera todas las permutaciones posibles de las ciudades, resultando en una complejidad 
+     * factorial.
      */
     static vector<int> Solve(int n, vector<vector<int>>& distancias){
         vector<int> nodes(n - 1);

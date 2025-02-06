@@ -30,10 +30,29 @@
 #include "lineal_search.h"
 using namespace std;
 
+/* AUTORES
+ * Carlos Ernesto Soto Alarcón A01747990
+ * Sergio Alfonso Casillas Santoyo A01424863
+ * Karime Itzel Ruvalcaba Pérez A01656188
+ */
+/**
+ * @brief Convierte un índice numérico en una letra correspondiente.
+ * @param index Índice a convertir.
+ * @return Carácter en base a la conversión de índice a letra.
+ *
+ * @complejidad O(1) - Conversión directa de un índice a un carácter.
+ */
 char convert_to_letters(int index){
     return static_cast<char>('A' + index);
 }
 
+/**
+ * @brief Formatea la salida del problema del viajero (TSP).
+ * @param route Vector con la ruta obtenida del algoritmo.
+ * @return Cadena de caracteres con la ruta formateada.
+ *
+ * @complejidad O(n) - Se recorre la ruta una vez para formatearla.
+ */
 string format_tsp_output(const vector<int>& route){
     string result;
     for (int node : route){

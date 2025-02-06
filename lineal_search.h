@@ -35,6 +35,8 @@ using namespace std;
  * Esta clase proporciona un método estático para encontrar la central más
  * cercana a un nuevo contrato, calculando la distancia euclidiana entre
  * los puntos proporcionados.
+ * 
+ * Complejidad O(n): Se recorre la lista de centrales para encontrar la más cercana
  */
 class LinealSearch{
     public:
@@ -61,5 +63,4 @@ class LinealSearch{
         return closest_central;
     }
 };
-
 # endif

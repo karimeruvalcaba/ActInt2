@@ -39,10 +39,12 @@ public:
     /**
      * @brief Constructor de la estructura DSU.
      * 
-     * Inicializa la estructura con `n` elementos, donde cada nodo es su propio 
+     * Inicializa la estructura con "n" elementos, donde cada nodo es su propio 
      * conjunto al inicio.
      * 
      * @param n Número de elementos en la estructura DSU.
+     *
+     * Complejidad O(n): Se incializan "n" elementos
      */
     DSU(int n) {
         parent = new int[n];
@@ -61,6 +63,8 @@ public:
      * 
      * @param i Elemento a buscar en la estructura.
      * @return Representante del conjunto al que pertenece "i".
+     *
+     * Complejidad O(α(n)): Donde α(n) es la inversa de la función de Ackermann, casi constante.
      */
     int Find(int i) {
         if (parent[i] == -1) {
@@ -76,6 +80,8 @@ public:
      * 
      * @param x Primer elemento.
      * @param y Segundo elemento.
+     *
+     * Complejidad O(α(n)): Donde α(n) es la inversa de la función de Ackermann, casi constante.
      */
     void Unite(int x, int y) {
         int s1 = Find(x);
@@ -97,6 +103,8 @@ public:
      * @brief Destructor de la estructura DSU.
      * 
      * Libera la memoria reservada dinámicamente para evitar fugas de memoria.
+     *
+     * Complejidad O(n): Libera la memoria almacenada de "parent" y "rank".
      */
     ~DSU() {
         delete[] parent;
@@ -142,6 +150,8 @@ public:
      * seleccionar las aristas que forman el MST, asegurando que no se formen ciclos.
      * 
      * @return El costo total del MST.
+     *
+     * Complejidad O(E log E): Donde E es el número de aristas en el grafo.
      */
     int KruskalsMST() {
         sort(edgeList.begin(), edgeList.end()); ///< Ordena las aristas por peso.

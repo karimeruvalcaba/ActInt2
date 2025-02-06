@@ -40,6 +40,7 @@ public:
      * @param source Nodo fuente.
      * @param sink Nodo sumidero.
      * @return El valor del flujo máximo de source a sink.
+     * Complejidad: 0(VE^2) donde V es el numero de vertices y E es el número de aristas del grafo
      */
     static int Solve(int n, const vector<vector<int>>& capacity, int source, int sink) {
         vector<vector<int>> flow(n, vector<int>(n, 0));
@@ -63,6 +64,7 @@ private:
      * @param sink Nodo sumidero.
      * @param parent Vector donde se almacenará el camino encontrado.
      * @return Verdadero si se encuentra un camino aumentante, falso en caso contrario.
+     * Complejidad: O(V + E) V es el número de vertices y E el número de aristas en un grafo.
      */
     static bool BFS(int n, const vector<vector<int>>& capacity, const vector<vector<int>>& flow,
                     int source, int sink, vector<int>& parent) {
@@ -97,6 +99,7 @@ private:
      * @param sink Nodo sumidero.
      * @param parent Vector que contiene el camino aumentante.
      * @return La cantidad de flujo añadida a la red.
+     * Complejidad O(V): La función recorre el camino de sink a source, esta tiene como máximo V nodos.
      */
     static int AugmentFlow(const vector<vector<int>>& capacity, vector<vector<int>>& flow,
                            int source, int sink, const vector<int>& parent) {
